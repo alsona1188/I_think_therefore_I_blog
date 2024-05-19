@@ -35,6 +35,7 @@ ALLOWED_HOSTS = ['8000-alsona1188-ithinktheref-u7udds26vu0.ws-eu111.gitpod.io','
 
 # Application definition
 
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -90,6 +91,12 @@ DATABASES = {
 }
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.codeanyapp.com",
+    "https://*.herokuapp.com",
+    "https://8000-alsona1188-ithinktheref-u7udds26vu0.ws-eu111.gitpod.io"
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
