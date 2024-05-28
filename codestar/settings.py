@@ -31,7 +31,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 SECRET_KEY = 'django-insecure-=9@4i%!o09i^par+%_u7-acc3r9xl)xe7du2^^3iion^c+ix$@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['8000-alsona1188-ithinktheref-ve7soob3ddi.ws-eu114.gitpod.io','.herokuapp.com']
 
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_summernote',
     'blog',
+    'about',
 ]
 
 MIDDLEWARE = [
