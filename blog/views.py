@@ -3,6 +3,8 @@ from django.views import generic
 from .models import Post
 from .forms import CommentForm
 from django.contrib import messages
+from django.contrib.auth.models import User
+
 
 # Create your views here.
 
@@ -12,6 +14,16 @@ class PostList(generic.ListView):
     template_name = "blog/index.html"
     paginate_by = 6
 
+def profile_page(request):
+        user = get_object_or_404(User, user=request.user)
+        # Retrieve all comments for the user object
+        comments = user.commenter.all()
+
+def post_comment(request):
+    messages.add_message(
+    request, messages.SUCCESS,
+    'Comment submitted and awaiting approval'
+)
 
 def post_detail(request, slug):
     """
@@ -30,6 +42,8 @@ def post_detail(request, slug):
     post = get_object_or_404(queryset, slug=slug)
     comments = post.comments.all().order_by("-created_on")
     comment_count = post.comments.filter(approved=True).count()
+
+    print("Received a POST request")
     if request.method == "POST":
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
@@ -44,6 +58,10 @@ def post_detail(request, slug):
 
     comment_form = CommentForm()
 
+    print("About to render template")
+
+    
+
     return render(
         request,
         "blog/post_detail.html",
@@ -53,3 +71,5 @@ def post_detail(request, slug):
         "comment_form": comment_form,
         }
     )
+
+    
