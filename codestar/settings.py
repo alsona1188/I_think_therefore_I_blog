@@ -10,8 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
-from pathlib import Path
 import os
+from pathlib import Path
+from django.contrib.messages import constants as messages
 import dj_database_url
 if os.path.isfile('env.py'):
     import env
@@ -30,7 +31,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '8000-alsona1188-ithinktheref-ve7soob3ddi.ws-eu114.gitpod.io', '.herokuapp.com']
+    '8000-alsona1188-ithinktheref-8ghbjgrjqbx.ws-eu114.gitpod.io', '.herokuapp.com']
 
 
 # Application definition
@@ -58,6 +59,7 @@ INSTALLED_APPS = [
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
@@ -111,7 +113,7 @@ DATABASES = {
 CSRF_TRUSTED_ORIGINS = [
     "https://*.codeanyapp.com",
     "https://*.herokuapp.com",
-    "https://8000-alsona1188-ithinktheref-ve7soob3ddi.ws-eu114.gitpod.io"
+    "https://8000-alsona1188-ithinktheref-8ghbjgrjqbx.ws-eu114.gitpod.io"
 ]
 
 # Password validation
@@ -144,6 +146,11 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+MESSAGE_TAGS = {
+    messages.SUCCESS: 'alert-success',
+    messages.ERROR: 'alert-danger',
+}
 
 
 # Static files (CSS, JavaScript, Images)
